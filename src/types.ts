@@ -7,9 +7,8 @@ export interface Env {
   ANTHROPIC_API_KEY: string;
   SEARCHAPI_KEY: string;
   GITHUB_TOKEN: string;
-  RESEND_API_KEY: string;
-  EMAIL_TO: string;
-  SMS_GATEWAY_TO: string;
+  EMAIL_TO?: string;
+  SMS_GATEWAY_TO?: string;
   CRON_SECRET: string;
   SITE_URL: string;
   GITHUB_REPO: string;
@@ -54,9 +53,18 @@ export interface PostRecord {
 export type PostStatus = 'skipped' | 'queued' | 'generating' | 'draft_ready' | 'published' | 'failed';
 
 export type TopicCluster =
-  | 'bidding' | 'creative' | 'audiences' | 'measurement'
-  | 'automation' | 'policy' | 'shopping' | 'video'
-  | 'local' | 'budget' | 'account-structure' | 'general';
+  | 'bidding'
+  | 'creative'
+  | 'audiences'
+  | 'measurement'
+  | 'automation'
+  | 'policy'
+  | 'shopping'
+  | 'video'
+  | 'local'
+  | 'budget'
+  | 'account-structure'
+  | 'general';
 
 export interface GeneratedArticle {
   html: string;

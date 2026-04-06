@@ -38,7 +38,7 @@ The blog engine is a single Cloudflare Worker that runs a sequential pipeline on
 └──────┬──────┘
        ▼
 ┌─────────────┐
-│ 9. NOTIFY    │ Email (Resend) + SMS (AT&T gateway) + IndexNow
+│ 9. NOTIFY    │ Email (Gmail API) + SMS (AT&T gateway) + IndexNow
 └─────────────┘
 ```
 
@@ -97,9 +97,11 @@ Keyword-based scoring across 12 PPC clusters. Each cluster has 10-15 keywords. T
 
 ### `notify.ts` — Notifications + IndexNow
 
-- Sends email via Resend API
-- Sends SMS via Resend to `{number}@txt.att.net` (carrier email-to-SMS gateway)
-- Calls the site's `/api/indexnow` endpoint for search engine notification
+- Calls `/api/blog-notify` on the Pages site (authenticated via `CRON_SECRET`)
+- The Pages endpoint sends email via **Gmail API** using the admin's Google OAuth session
+- Sends SMS via AT&T email-to-text gateway (`number@txt.att.net`) through the same Gmail path
+- No third-party email service (Resend, SendGrid, etc.) required
+- Also calls the site's `/api/indexnow` endpoint for search engine notification
 
 ### `budget.ts` — Cost Management
 

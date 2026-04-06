@@ -12,9 +12,10 @@ This guide walks you through setting up the Reddit PPC Blog Engine from scratch.
 | Anthropic API key | Claude article generation | [console.anthropic.com](https://console.anthropic.com/) |
 | SearchAPI key | Reddit thread discovery | [searchapi.io](https://www.searchapi.io/) |
 | GitHub PAT | Git commit from Worker | [github.com/settings/tokens](https://github.com/settings/tokens) |
-| Resend API key | Email + SMS notifications | [resend.com](https://resend.com/) |
+| Google OAuth (Gmail) | Email + SMS notifications | Already connected via Buddy |
 
 > **Cost note**: The Workers paid plan ($5/month) is required for cron triggers and D1. Claude costs ~$0.05-0.10 per article. SearchAPI has a free tier of 100 queries/month. Total monthly cost for 4 posts/day: ~$15-25.
+> **No Resend needed**: Notifications use the same Gmail API connection that powers the rest of the platform.
 
 ## Step 1: Clone and Install
 
@@ -104,16 +105,7 @@ wrangler secret put SEARCHAPI_KEY
 # GitHub token for committing blog posts
 wrangler secret put GITHUB_TOKEN
 
-# Resend API key for email/SMS
-wrangler secret put RESEND_API_KEY
-
-# Your email address for notifications
-wrangler secret put EMAIL_TO
-
-# Your phone number for SMS (10 digits, no dashes)
-wrangler secret put SMS_GATEWAY_TO
-
-# Random secret for auth (used by cron scheduler)
+# Random secret for auth (used by cron scheduler + blog-notify endpoint)
 wrangler secret put CRON_SECRET
 ```
 

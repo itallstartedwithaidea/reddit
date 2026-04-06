@@ -1,89 +1,51 @@
 import type { Env } from './types';
 
 export async function notifyPublished(env: Env, title: string, url: string): Promise<void> {
-  await Promise.allSettled([
-    sendEmail(env, title, url),
-    sendSms(env, title, url),
-  ]);
+  await callBlogNotify(env, { type: 'published', title, url });
 }
 
 export async function notifyError(env: Env, error: string): Promise<void> {
-  await sendEmail(env, 'Blog Engine Error', error, true).catch(err =>
-    console.error('[notify] Failed to send error email:', (err as Error).message)
-  );
+  await callBlogNotify(env, { type: 'error', title: 'Blog Engine Error', message: error });
 }
 
-export async function notifyBudgetAlert(env: Env, percentage: number, currentCost: number, limit: number): Promise<void> {
-  const subject = `Blog Engine Budget Alert: ${percentage}% used`;
-  const body = `Monthly budget is at ${percentage}% ($${currentCost.toFixed(2)} of $${limit} limit).${
+export async function notifyBudgetAlert(
+  env: Env,
+  percentage: number,
+  currentCost: number,
+  limit: number,
+): Promise<void> {
+  const title = `Blog Engine Budget Alert: ${percentage}% used`;
+  const message = `Monthly budget is at ${percentage}% ($${currentCost.toFixed(2)} of $${limit} limit).${
     percentage >= 100 ? ' Pipeline is PAUSED until next month.' : ' Approaching limit.'
   }`;
-
-  await Promise.allSettled([
-    sendEmail(env, subject, body, true),
-    sendSms(env, subject, ''),
-  ]);
+  await callBlogNotify(env, { type: 'budget', title, message });
 }
 
-async function sendEmail(env: Env, title: string, content: string, isAlert = false): Promise<void> {
-  if (!env.RESEND_API_KEY || !env.EMAIL_TO) {
-    console.warn('[notify] Missing RESEND_API_KEY or EMAIL_TO, skipping email');
+async function callBlogNotify(env: Env, payload: Record<string, string>): Promise<void> {
+  if (!env.SITE_URL || !env.CRON_SECRET) {
+    console.warn('[notify] Missing SITE_URL or CRON_SECRET, skipping notification');
     return;
   }
 
-  const subject = isAlert ? title : `New post live: ${title}`;
-  const body = isAlert ? content : `${title}\n\n${content}\n\n— Blog Engine`;
+  try {
+    const resp = await fetch(`${env.SITE_URL}/api/blog-notify`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Cron-Secret': env.CRON_SECRET,
+      },
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(15000),
+    });
 
-  const resp = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: 'Blog Engine <blog-engine@googleadsagent.ai>',
-      to: env.EMAIL_TO,
-      subject,
-      text: body,
-    }),
-    signal: AbortSignal.timeout(10000),
-  });
-
-  if (!resp.ok) {
-    console.error(`[notify] Resend email failed: ${resp.status}`);
-  } else {
-    console.log(`[notify] Email sent to ${env.EMAIL_TO}: ${subject}`);
-  }
-}
-
-async function sendSms(env: Env, title: string, url: string): Promise<void> {
-  if (!env.RESEND_API_KEY || !env.SMS_GATEWAY_TO) {
-    console.warn('[notify] Missing SMS_GATEWAY_TO, skipping text');
-    return;
-  }
-
-  const smsAddress = `${env.SMS_GATEWAY_TO}@txt.att.net`;
-  const body = url ? `New post: ${title} ${url}` : title;
-
-  const resp = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: 'Blog Engine <blog-engine@googleadsagent.ai>',
-      to: smsAddress,
-      subject: '',
-      text: body,
-    }),
-    signal: AbortSignal.timeout(10000),
-  });
-
-  if (!resp.ok) {
-    console.error(`[notify] SMS gateway failed: ${resp.status}`);
-  } else {
-    console.log(`[notify] SMS sent via ${smsAddress}`);
+    if (resp.ok) {
+      console.log(`[notify] ${payload.type} notification sent: ${payload.title}`);
+    } else {
+      const err = await resp.text().catch(() => '');
+      console.error(`[notify] Failed (${resp.status}): ${err.substring(0, 200)}`);
+    }
+  } catch (e) {
+    console.error(`[notify] Error: ${(e as Error).message}`);
   }
 }
 

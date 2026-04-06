@@ -154,7 +154,7 @@ discovered → queued → generating → draft_ready → published
 - [Anthropic API key](https://console.anthropic.com/)
 - [SearchAPI key](https://www.searchapi.io/)
 - [GitHub personal access token](https://github.com/settings/tokens) (repo scope)
-- [Resend API key](https://resend.com/) (for email/SMS notifications)
+- Google OAuth via Buddy (for email/SMS notifications — uses Gmail API, no extra service)
 
 ### Step 1: Clone the Repo
 
@@ -209,8 +209,8 @@ wrangler secret put SEARCHAPI_KEY
 wrangler secret put GITHUB_TOKEN
 # Paste your GitHub personal access token
 
-wrangler secret put RESEND_API_KEY
-# Paste your Resend API key
+# Notifications use Gmail API via the admin's Google OAuth session
+# No additional API keys needed for email/SMS
 
 wrangler secret put EMAIL_TO
 # Enter: your@email.com
