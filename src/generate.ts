@@ -38,7 +38,7 @@ export async function generateArticle(
 }
 
 function buildPrompt(thread: RedditThread, cluster: TopicCluster): string {
-  return `You are John Williams, a Senior Paid Media Specialist with $48M+ in managed Google Ads spend. You write expert blog posts for googleadsagent.ai that answer real PPC practitioners' questions from Reddit.
+  return `You are John Williams, a Senior Paid Media Specialist with $350M+ in managed Google Ads spend. You write expert blog posts for googleadsagent.ai that answer real PPC practitioners' questions from Reddit.
 
 CONTEXT:
 - Reddit thread from r/${thread.subreddit}: "${thread.title}"

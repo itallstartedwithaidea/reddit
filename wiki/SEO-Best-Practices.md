@@ -65,7 +65,7 @@ Google's Experience, Expertise, Authoritativeness, and Trustworthiness signals:
 
 | Signal | Implementation |
 |--------|---------------|
-| **Experience** | Author bio references $48M+ managed spend |
+| **Experience** | Author bio references $350M+ managed spend |
 | **Expertise** | Content includes specific benchmarks, CPC ranges, strategy frameworks |
 | **Authority** | `sameAs` links to GitHub, Twitter, Substack; `Person` entity with `jobTitle` |
 | **Trust** | AI disclosure visible on every page; Reddit source attribution; no fabricated quotes |

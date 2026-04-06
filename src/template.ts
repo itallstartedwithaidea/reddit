@@ -198,7 +198,7 @@ a{color:var(--amber);text-decoration:none}a:hover{text-decoration:underline}
 <div class="hero">
   <div class="hero-inner">
     <h1>${escapeHtml(data.title)}</h1>
-    <div class="author-line"><strong>John Williams</strong> &middot; Senior Paid Media Specialist &middot; $48M+ Managed &middot; ${formatDate(data.datePublished)}</div>
+    <div class="author-line"><strong>John Williams</strong> &middot; Senior Paid Media Specialist &middot; $350M+ Managed &middot; ${formatDate(data.datePublished)}</div>
     <div class="source-line">Based on an <a href="${escapeAttr(data.redditUrl)}" target="_blank" rel="noopener">r/${escapeHtml(data.subreddit)} community discussion</a></div>
   </div>
 </div>
@@ -212,17 +212,17 @@ ${data.bodyHtml}
 ${relatedHtml}
 
 <div class="ai-disclosure">
-  <strong>AI Disclosure:</strong> This article was generated with AI assistance based on a community discussion on <a href="${escapeAttr(data.redditUrl)}" target="_blank" rel="noopener">Reddit r/${escapeHtml(data.subreddit)}</a>. Expert analysis and practitioner perspective by John Williams, Senior Paid Media Specialist with $48M+ in managed Google Ads spend. AI was used to draft and structure the content; all strategic recommendations reflect real campaign experience.
+  <strong>AI Disclosure:</strong> This article was generated with AI assistance based on a community discussion on <a href="${escapeAttr(data.redditUrl)}" target="_blank" rel="noopener">Reddit r/${escapeHtml(data.subreddit)}</a>. Expert analysis and practitioner perspective by John Williams, Senior Paid Media Specialist with $350M+ in managed Google Ads spend. AI was used to draft and structure the content; all strategic recommendations reflect real campaign experience.
 </div>
 
 </div>
 
 <div class="footer">
   <div class="footer-bio">
-    <strong><a href="/">John Williams</a></strong> &middot; Senior Paid Media Specialist &middot; $48M+ Managed<br>
+    <strong><a href="/">John Williams</a></strong> &middot; Senior Paid Media Specialist &middot; $350M+ Managed<br>
     <a href="https://googleadsagent.ai">googleadsagent.ai</a> &middot; <a href="/contact/">Contact</a> &middot; <a href="https://github.com/itallstartedwithaidea" target="_blank" rel="noopener">GitHub</a> &middot; <a href="/blog/">Blog</a>
   </div>
-  <div>&copy; 2026 googleadsagent.ai &mdash; All rights reserved.</div>
+  <div>&copy; <script>document.write(new Date().getFullYear())</script> googleadsagent.ai &mdash; All rights reserved.</div>
 </div>
 
 <script src="/shared/site-search.js" defer></script>
