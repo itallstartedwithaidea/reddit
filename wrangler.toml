@@ -1,0 +1,45 @@
+name = "blog-engine"
+main = "src/index.ts"
+compatibility_date = "2025-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[triggers]
+crons = ["0 11 * * *", "0 23 * * *"]
+
+[ai]
+binding = "AI"
+
+[[kv_namespaces]]
+binding = "BLOG_DATA"
+id = "" # wrangler kv namespace create BLOG_DATA -c workers/blog-engine/wrangler.toml
+
+[[r2_buckets]]
+binding = "BLOG_ASSETS"
+bucket_name = "blog-assets"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "blog-tracker"
+database_id = "" # wrangler d1 create blog-tracker
+
+[[vectorize]]
+binding = "VECTORIZE"
+index_name = "blog-topics"
+
+[vars]
+ENVIRONMENT = "production"
+MAX_POSTS_PER_RUN = "2"
+MAX_DAILY_GENERATIONS = "4"
+MAX_MONTHLY_USD = "50"
+SITE_URL = "https://googleadsagent.ai"
+GITHUB_REPO = "itallstartedwithaidea/googleadsagent-site"
+GITHUB_BRANCH = "main"
+
+# Secrets (wrangler secret put -c workers/blog-engine/wrangler.toml):
+# ANTHROPIC_API_KEY
+# SEARCHAPI_KEY
+# GITHUB_TOKEN
+# RESEND_API_KEY
+# EMAIL_TO
+# SMS_GATEWAY_TO
+# CRON_SECRET
