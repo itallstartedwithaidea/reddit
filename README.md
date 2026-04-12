@@ -1,5 +1,7 @@
 # Reddit-Sourced PPC Blog Engine
 
+[English](README.md) | [Français](README.fr.md) | [Español](README.es.md) | [中文](README.zh.md) | [Nederlands](README.nl.md) | [Русский](README.ru.md) | [한국어](README.ko.md)
+
 **Automated AI blog pipeline that discovers Google Ads & PPC questions from Reddit, generates expert-grade articles with Claude, and deploys to Cloudflare Pages — twice daily, fully unattended.**
 
 [![Live Blog](https://img.shields.io/badge/Live_Blog-googleadsagent.ai-f0a830?style=for-the-badge)](https://googleadsagent.ai/blog/)
