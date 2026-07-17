@@ -81,7 +81,7 @@ Dit project bestaat dankzij de geweldige PPC-gemeenschappen op Reddit, LinkedIn,
 | **Google Ads Gemini Extension** | Gemini CLI-extensie met 22 tools | [github.com/itallstartedwithaidea/google-ads-gemini-extension](https://github.com/itallstartedwithaidea/google-ads-gemini-extension) |
 | **Google Ads Skills** | Anthropic Claude Agent Skills voor Google Ads | [github.com/itallstartedwithaidea/google-ads-skills](https://github.com/itallstartedwithaidea/google-ads-skills) |
 | **Google Ads API Agent** | Volledige Python-agent met 28 acties | [github.com/itallstartedwithaidea/google-ads-api-agent](https://github.com/itallstartedwithaidea/google-ads-api-agent) |
-| **GoogleAdsAgent.ai** | De volledige website en tools | [github.com/itallstartedwithaidea/googleadsagent-site](https://github.com/itallstartedwithaidea/googleadsagent-site) |
+| **GoogleAdsAgent.ai** | De volledige website en tools | [googleadsagent.ai](https://googleadsagent.ai) |
 
 ---
 

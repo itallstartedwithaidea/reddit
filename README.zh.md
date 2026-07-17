@@ -81,7 +81,7 @@
 | **Google Ads Gemini Extension** | Gemini CLI 扩展，包含 22 个工具 | [github.com/itallstartedwithaidea/google-ads-gemini-extension](https://github.com/itallstartedwithaidea/google-ads-gemini-extension) |
 | **Google Ads Skills** | Anthropic Claude Agent 的 Google Ads 技能 | [github.com/itallstartedwithaidea/google-ads-skills](https://github.com/itallstartedwithaidea/google-ads-skills) |
 | **Google Ads API Agent** | 完整的 Python 代理，包含 28 个操作 | [github.com/itallstartedwithaidea/google-ads-api-agent](https://github.com/itallstartedwithaidea/google-ads-api-agent) |
-| **GoogleAdsAgent.ai** | 完整网站及工具 | [github.com/itallstartedwithaidea/googleadsagent-site](https://github.com/itallstartedwithaidea/googleadsagent-site) |
+| **GoogleAdsAgent.ai** | 完整网站及工具 | [googleadsagent.ai](https://googleadsagent.ai) |
 
 ---
 

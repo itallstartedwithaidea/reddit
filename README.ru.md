@@ -81,7 +81,7 @@
 | **Google Ads Gemini Extension** | Расширение Gemini CLI с 22 инструментами | [github.com/itallstartedwithaidea/google-ads-gemini-extension](https://github.com/itallstartedwithaidea/google-ads-gemini-extension) |
 | **Google Ads Skills** | Навыки Anthropic Claude Agent для Google Ads | [github.com/itallstartedwithaidea/google-ads-skills](https://github.com/itallstartedwithaidea/google-ads-skills) |
 | **Google Ads API Agent** | Полноценный Python-агент с 28 действиями | [github.com/itallstartedwithaidea/google-ads-api-agent](https://github.com/itallstartedwithaidea/google-ads-api-agent) |
-| **GoogleAdsAgent.ai** | Полный сайт и инструменты | [github.com/itallstartedwithaidea/googleadsagent-site](https://github.com/itallstartedwithaidea/googleadsagent-site) |
+| **GoogleAdsAgent.ai** | Полный сайт и инструменты | [googleadsagent.ai](https://googleadsagent.ai) |
 
 ---
 

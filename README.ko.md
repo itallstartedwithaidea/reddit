@@ -81,7 +81,7 @@
 | **Google Ads Gemini Extension** | 22개 도구를 갖춘 Gemini CLI 확장 | [github.com/itallstartedwithaidea/google-ads-gemini-extension](https://github.com/itallstartedwithaidea/google-ads-gemini-extension) |
 | **Google Ads Skills** | Google Ads용 Anthropic Claude Agent 스킬 | [github.com/itallstartedwithaidea/google-ads-skills](https://github.com/itallstartedwithaidea/google-ads-skills) |
 | **Google Ads API Agent** | 28개 액션을 갖춘 완전한 Python 에이전트 | [github.com/itallstartedwithaidea/google-ads-api-agent](https://github.com/itallstartedwithaidea/google-ads-api-agent) |
-| **GoogleAdsAgent.ai** | 전체 웹사이트 및 도구 | [github.com/itallstartedwithaidea/googleadsagent-site](https://github.com/itallstartedwithaidea/googleadsagent-site) |
+| **GoogleAdsAgent.ai** | 전체 웹사이트 및 도구 | [googleadsagent.ai](https://googleadsagent.ai) |
 
 ---
 
